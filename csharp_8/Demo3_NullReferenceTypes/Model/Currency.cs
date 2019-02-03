@@ -1,3 +1,4 @@
+#nullable enable
 using System;
 using System.Collections.Generic;
 
@@ -17,11 +18,13 @@ namespace Demo3_NullReferenceTypes.Model
         
         public static readonly Currency SEK = new Currency("SEK", "Swedish Krona"); 
         public static readonly Currency EUR = new Currency("EUR", "Euro");
+        public static readonly Currency DKK = new Currency(null, "Euro");
 
         private static readonly IReadOnlyDictionary<string, Currency> ValidCurrencies = new Dictionary<string, Currency>
         {
             {SEK.Code, SEK},
-            {EUR.Code, EUR}
+            {EUR.Code, EUR},
+            {DKK.Code, DKK}
         };
         
         public static Currency Parse(string code)

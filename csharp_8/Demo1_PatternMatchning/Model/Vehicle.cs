@@ -27,19 +27,29 @@ namespace Demo1_PatternMatching.Model
 
 
 
-        public RegistrationState RegistrationState { get; private set; } = RegistrationState.New;
+        public RegistrationState State { get; private set; } = RegistrationState.New;
 
         // Tuple patterns (State machine)
         public void ChangeRegistration(RegistrationAction action)
         {
-            RegistrationState = (RegistrationState, action) switch
+            State = (State, action) switch
             {
                 (RegistrationState.New, RegistrationAction.Activate) => RegistrationState.Active,
                 (RegistrationState.Active, RegistrationAction.Shutdown) => RegistrationState.Shutdown,
                 (RegistrationState.Shutdown, RegistrationAction.Activate) => RegistrationState.Active,
                 (_, RegistrationAction.Terminate) => RegistrationState.Terminated,
-                _ => throw new InvalidOperationException($"Invalid state transistion {RegistrationState} -> {action}")
+                _ => throw new InvalidOperationException($"Invalid state transistion {State} -> {action}")
             };
         }
+
+        public string RegistrationDescription => this switch
+        {
+            Truck { State: RegistrationState.New, IsEnviromentFriendly: true, Weight: var w } _ 
+                => $"An new enviroment friendly truck that weights {w} kg",
+            Truck { State: RegistrationState.Active, IsEnviromentFriendly: true, Weight: var w } _
+                => $"An active enviroment friendly truck that weights {w} kg",
+            Truck { IsEnviromentFriendly: false } truck => $"Regular truck that weights {truck.Weight} kg",
+            _ => string.Empty
+        };
     }
 }
