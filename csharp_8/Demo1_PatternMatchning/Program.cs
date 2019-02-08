@@ -36,8 +36,8 @@ namespace Demo1_PatternMatching
                 Car car when car.Weight < 1000 => 50,
                 Car car when car.Weight >= 1000 => 100,
                 Motorcycle _ => 30,
-                Truck truck when truck.IsEnviromentFriendly => 100,
-                Truck truck when !truck.IsEnviromentFriendly => 200,
+                Truck truck when truck.IsEnvironmentFriendly => 100,
+                Truck truck when !truck.IsEnvironmentFriendly => 200,
                 null => throw new NullReferenceException(),
                 _ => 0
             };

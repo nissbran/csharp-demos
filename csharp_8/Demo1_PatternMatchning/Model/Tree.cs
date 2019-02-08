@@ -3,6 +3,6 @@
     public class Tree
     {
         public int Weight { get; }
-        public bool IsEnviromentFriendly { get; } = true;
+        public bool IsEnvironmentFriendly { get; } = true;
     }
 }

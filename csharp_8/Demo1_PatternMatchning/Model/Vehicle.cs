@@ -5,18 +5,18 @@ namespace Demo1_PatternMatching.Model
     public abstract class Vehicle
     {
         public int Weight { get; }
-        public bool IsEnviromentFriendly { get; }
+        public bool IsEnvironmentFriendly { get; }
 
         protected Vehicle(int weight, bool isEnvironmentFriendly = false)
         {
             Weight = weight;
-            IsEnviromentFriendly = isEnvironmentFriendly;
+            IsEnvironmentFriendly = isEnvironmentFriendly;
         }
 
         public string Description => this switch
         {
-            Truck truck when truck.IsEnviromentFriendly => $"Enviroment friendly truck that weights {truck.Weight} kg",
-            Truck truck when !truck.IsEnviromentFriendly => $"Regular truck that weights {truck.Weight} kg",
+            Truck truck when truck.IsEnvironmentFriendly => $"Environment friendly truck that weights {truck.Weight} kg",
+            Truck truck when !truck.IsEnvironmentFriendly => $"Regular truck that weights {truck.Weight} kg",
             Vehicle vehicle => $"Vehicle that weights {vehicle.Weight} kg",
             _ => string.Empty
         };
@@ -38,17 +38,17 @@ namespace Demo1_PatternMatching.Model
                 (RegistrationState.Active, RegistrationAction.Shutdown) => RegistrationState.Shutdown,
                 (RegistrationState.Shutdown, RegistrationAction.Activate) => RegistrationState.Active,
                 (_, RegistrationAction.Terminate) => RegistrationState.Terminated,
-                _ => throw new InvalidOperationException($"Invalid state transistion {State} -> {action}")
+                _ => throw new InvalidOperationException($"Invalid state transition {State} -> {action}")
             };
         }
 
         public string RegistrationDescription => this switch
         {
-            Truck { State: RegistrationState.New, IsEnviromentFriendly: true, Weight: var w } _ 
+            Truck { State: RegistrationState.New, IsEnvironmentFriendly: true, Weight: var w } _ 
                 => $"An new enviroment friendly truck that weights {w} kg",
-            Truck { State: RegistrationState.Active, IsEnviromentFriendly: true, Weight: var w } _
+            Truck { State: RegistrationState.Active, IsEnvironmentFriendly: true, Weight: var w } _
                 => $"An active enviroment friendly truck that weights {w} kg",
-            Truck { IsEnviromentFriendly: false } truck => $"Regular truck that weights {truck.Weight} kg",
+            Truck { IsEnvironmentFriendly: false } truck => $"Regular truck that weights {truck.Weight} kg",
             _ => string.Empty
         };
     }
