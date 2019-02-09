@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using BenchmarkDotNet.Attributes;
 
-namespace Demo1_SpanMemory.Benchmarks
+namespace Demo2_SpanMemory.Benchmarks
 {
     [MemoryDiagnoser]
     [CoreJob]

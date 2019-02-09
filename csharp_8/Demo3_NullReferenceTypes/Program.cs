@@ -17,7 +17,5 @@ namespace Demo3_NullReferenceTypes
 
             Console.WriteLine("Hello World!");
         }
-
     }
-    
 }

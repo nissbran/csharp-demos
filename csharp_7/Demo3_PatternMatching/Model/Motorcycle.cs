@@ -1,4 +1,4 @@
-﻿namespace Demo2_PatternMatching.Model
+﻿namespace Demo3_PatternMatching.Model
 {
     public class Motorcycle : Vehicle
     {
