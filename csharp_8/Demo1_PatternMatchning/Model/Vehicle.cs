@@ -48,7 +48,8 @@ namespace Demo1_PatternMatching.Model
                 => $"An new enviroment friendly truck that weights {w} kg",
             Truck { State: RegistrationState.Active, IsEnvironmentFriendly: true, Weight: var w } _
                 => $"An active enviroment friendly truck that weights {w} kg",
-            Truck { IsEnvironmentFriendly: false } truck => $"Regular truck that weights {truck.Weight} kg",
+            Truck { IsEnvironmentFriendly: false } truck 
+                => $"Regular truck that weights {truck.Weight} kg",
             _ => string.Empty
         };
     }

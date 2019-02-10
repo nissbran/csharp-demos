@@ -6,7 +6,6 @@ namespace Demo4_DefaultInterface
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
         }
     }
 }
