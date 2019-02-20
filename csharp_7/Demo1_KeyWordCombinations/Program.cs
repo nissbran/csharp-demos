@@ -9,17 +9,23 @@ namespace Demo1_KeyWordCombinations
         public static async Task Main(string[] args)
         {
             var id = new ReadOnlyId(Guid.NewGuid());
-            // var id2 = new StackOnlyId(Guid.NewGuid());
-            var result = MyMethod(id);
+            //var id2 = new StackOnlyId(Guid.NewGuid());
             
+            
+            // Value tuples
+            var result = MyMethod(id);
             Console.WriteLine($"Value tuple return {result.Item1.Id}, {result.Item2}");
 
             var (newId, id2) = MyMethod(id);
             Console.WriteLine($"Value tuple return {newId.Id}, {id2}");
 
+            
+            // In parameter
             var count = 5;
             var newcount = MyCountMethod(count);
             
+            
+            // Ref
             var car = new Car(12, true);
             //TestRef(ref car);
         }
@@ -38,15 +44,11 @@ namespace Demo1_KeyWordCombinations
             return count * 2;
         }
 
-        private static ref Vehicle RefReturns()
+        // ref returns
+        private static ref int RefReturns()
         {
-            var vehicles = new Vehicle[] { new Car(12, true)};
-            return ref vehicles[0];
-        }
-
-        private static void TestEnum<T>(T inenum) where T : Enum
-        {
-            
+            int[] ints = new int[4] {1, 2, 3, 4};
+            return ref ints[2];
         }
 
         private static void TestRef(ref Vehicle vehicle)
